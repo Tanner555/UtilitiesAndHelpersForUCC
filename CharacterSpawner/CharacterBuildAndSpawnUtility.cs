@@ -57,6 +57,20 @@ namespace UtilitiesAndHelpersForUCC
         [SerializeField] protected bool m_AddItems = true;
         [Tooltip("A reference to the ItemCollection used by the ItemSetManager and Inventory.")]
         [SerializeField] protected ItemCollection m_ItemCollection;
+        [Tooltip("Does the character have health?")]
+        [SerializeField] protected bool m_AddHealth = true;
+        [Tooltip("Should Unity's IK system be added?")]
+        [SerializeField] protected bool m_AddUnityIK = true;
+        [Tooltip("Should footstep effects play when moving?")]
+        [SerializeField] protected bool m_AddFootEffects = true;
+        [Tooltip("Should the standard set of abilities be added to the character?")]
+        [SerializeField] protected bool m_AddStandardAbilities = true;
+        [Tooltip("Is the character an AI agent?")]
+        [SerializeField] protected bool m_AIAgent;
+        [Tooltip("Should the NavMeshAgent be added to the AI agent?")]
+        [SerializeField] protected bool m_AddNavMeshAgent;
+        [Tooltip("Should the camera be assigned to the character after the character has been created?")]
+        [SerializeField] protected bool m_AssignCamera = true;
         [Tooltip("Movement Type That'll Be Used By The Character Locomotion and Camera Controller")]
         [SerializeField] protected EThirdPersonMovementTypes m_ThirdPersonMovementType;
 
@@ -179,16 +193,15 @@ namespace UtilitiesAndHelpersForUCC
         #region MethodsToOverride
         protected virtual IEnumerator CharacterBuilder_BuildCharacter()
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0);
             if (bBuildCharacterCompletely)
             {
                 // Use the Character Builder to add the Ultimate Character Controller components.
                 CharacterBuilder.BuildCharacter(spawnedGameObject, /*AddAnimator*/true, m_AnimatorController, /*FPMovementType*/string.Empty,
                                                 GetThirdPersonMovementType(m_ThirdPersonMovementType), /*startFPPerspective*/false,
-                                                /*FPHiddenItems*/null, /*ShadowCastMat*/null, /*AiAgent*/true);
-                spawnedGameObject.AddComponent<NavMeshAgent>();
+                                                /*FPHiddenItems*/null, /*ShadowCastMat*/null, /*AiAgent*/m_AIAgent);
                 CharacterBuilder.BuildCharacterComponents(spawnedGameObject, /*AiAgent*/true, m_AddItems, m_ItemCollection, /*FirstPersonItems*/false,
-                    /*AddHealth*/false, /*AddIK*/true, /*AddFootsteps*/true, /*AddStandardAbilities*/true, /*AddNavMeshAgent*/true);
+                    /*AddHealth*/m_AddHealth, /*AddIK*/m_AddUnityIK, /*AddFootsteps*/m_AddFootEffects, /*AddStandardAbilities*/m_AddStandardAbilities, /*AddNavMeshAgent*/m_AddNavMeshAgent);
                 // Ensure the smoothed bones have been added to the character.
                 characterLocomotion = spawnedGameObject.GetComponent<UltimateCharacterLocomotion>();
                 characterLocomotion.AddDefaultSmoothedBones();
@@ -200,6 +213,20 @@ namespace UtilitiesAndHelpersForUCC
                     if (animatorMonitor != null)
                     {
                         animatorMonitor.InitializeItemParameters();
+                    }
+                }
+
+                // The camera can automatically be assigned ot the new character.
+                if (m_AssignCamera && !m_AIAgent)
+                {
+                    var camera = Opsive.UltimateCharacterController.Utility.UnityEngineUtility.FindCamera(spawnedGameObject);
+                    if (camera != null)
+                    {
+                        var cameraController = camera.GetComponent<Opsive.UltimateCharacterController.Camera.CameraController>();
+                        if (cameraController != null)
+                        {
+                            cameraController.Character = spawnedGameObject;
+                        }
                     }
                 }
             }
