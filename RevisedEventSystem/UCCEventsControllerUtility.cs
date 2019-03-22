@@ -16,6 +16,8 @@ namespace UtilitiesAndHelpersForUCC
         #region StringList
         public static string LookupStr_OnItemTryReload = "OnItemTryReload";
         public static string LookupStr_OnAbilityWillEquipItem = "OnAbilityWillEquipItem";
+        public static string LookupStr_OnAimAbilityAim = "OnAimAbilityAim";
+        public static string LookupStr_OnDeath = "OnDeath";
         #endregion
 
         #region Register / Deregister Events
@@ -43,6 +45,46 @@ namespace UtilitiesAndHelpersForUCC
         /// <param name="caller"></param>
         /// <param name="handler"></param>
         public static void UnregisterOnAbilityWillEquipItem(Object caller, System.Action<Item, int> handler) => EventHandler.UnregisterEvent<Item, int>(caller, LookupStr_OnAbilityWillEquipItem, handler);
+
+        /// <summary>
+        /// For Event: OnAimAbilityAim. The Aim ability has started or stopped.
+        /// </summary>
+        /// <param name="caller"></param>
+        /// <param name="handler"></param>
+        public static void RegisterOnAimAbilityAim(Object caller, System.Action<bool> handler)
+        {
+            EventHandler.RegisterEvent<bool>(caller, LookupStr_OnAimAbilityAim, handler);
+        }
+
+        /// <summary>
+        /// For Event: OnAimAbilityAim. The Aim ability has started or stopped.
+        /// </summary>
+        /// <param name="caller"></param>
+        /// <param name="handler"></param>
+        public static void UnregisterOnAimAbilityAim(Object caller, System.Action<bool> handler)
+        {
+            EventHandler.UnregisterEvent<bool>(caller, LookupStr_OnAimAbilityAim, handler);
+        }
+
+        /// <summary>
+        /// For Event: OnDeath. The character has died.
+        /// </summary>
+        /// <param name="caller"></param>
+        /// <param name="handler"></param>
+        public static void RegisterOnDeath(Object caller, System.Action<Vector3, Vector3, GameObject> handler)
+        {
+            EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, handler);
+        }
+
+        /// <summary>
+        /// For Event: OnDeath. The character has died.
+        /// </summary>
+        /// <param name="caller"></param>
+        /// <param name="handler"></param>
+        public static void UnregisterOnDeath(Object caller, System.Action<Vector3, Vector3, GameObject> handler)
+        {
+            EventHandler.UnregisterEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, handler);
+        }
         #endregion
 
         #region EventCalls
@@ -68,6 +110,28 @@ namespace UtilitiesAndHelpersForUCC
         public static void CallOnAbilityWillEquipItem(Object caller, Item item, int slotID)
         {
             EventHandler.ExecuteEvent<Item, int>(caller, LookupStr_OnAbilityWillEquipItem, item, slotID);
+        }
+
+        /// <summary>
+        /// For Event: OnAimAbilityAim. The Aim ability has started or stopped.
+        /// </summary>
+        /// <param name="caller"></param>
+        /// <param name="aim">Has the Aim ability started?</param>
+        public static void CallOnAimAbilityAim(Object caller, bool aim)
+        {
+            EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnAimAbilityAim, aim);
+        }
+
+        /// <summary>
+        /// For Event: OnDeath. The character has died.
+        /// </summary>
+        /// <param name="caller"></param>
+        /// <param name="position">The position of the force.</param>
+        /// <param name="force">The amount of force which killed the character.</param>
+        /// <param name="attacker">The GameObject that killed the character.</param>
+        public static void CallOnDeath(Object caller, Vector3 position, Vector3 force, GameObject attacker)
+        {
+            EventHandler.ExecuteEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, position, force, attacker);
         }
         #endregion
     }
