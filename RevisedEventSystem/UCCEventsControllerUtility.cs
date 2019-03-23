@@ -183,5 +183,72 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<Item, int>(caller, LookupStr_OnInventoryUnequipItem, item, slotID);
         #endregion
 
+        #region OnInventoryAddItem
+        public static string LookupStr_OnInventoryAddItem = "OnInventoryAddItem";
+
+        /// <summary>
+        /// For Event: OnInventoryAddItem. The inventory has added the specified item.
+        /// </summary>
+        public static void RegisterOnInventoryAddItem(Object caller, System.Action<Item> handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnInventoryAddItem, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryAddItem. The inventory has added the specified item.
+        /// </summary>
+        public static void UnregisterOnInventoryAddItem(Object caller, System.Action<Item> handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnInventoryAddItem, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryAddItem. The inventory has added the specified item.
+        /// </summary>
+        /// <param name="item">The item that was added.</param>
+        public static void CallOnInventoryAddItem(Object caller, Item item) =>
+            EventHandler.ExecuteEvent<Item>(caller, LookupStr_OnInventoryAddItem, item);
+        #endregion
+
+        #region OnCharacterGrounded
+        public static string LookupStr_OnCharacterGrounded = "OnCharacterGrounded";
+
+        /// <summary>
+        /// For Event: OnCharacterGrounded. The character has changed grounded state.
+        /// </summary>
+        public static void RegisterOnCharacterGrounded(Object caller, System.Action<bool> handler) =>
+            EventHandler.RegisterEvent<bool>(caller, LookupStr_OnCharacterGrounded, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterGrounded. The character has changed grounded state.
+        /// </summary>
+        public static void UnregisterOnCharacterGrounded(Object caller, System.Action<bool> handler) =>
+            EventHandler.UnregisterEvent<bool>(caller, LookupStr_OnCharacterGrounded, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterGrounded. The character has changed grounded state.
+        /// </summary>
+        /// <param name="grounded">Is the character on the ground?</param>
+        public static void CallOnCharacterGrounded(Object caller, bool grounded) =>
+            EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnCharacterGrounded, grounded);
+        #endregion
+
+        #region OnRespawn
+        public static string LookupStr_OnRespawn = "OnRespawn";
+
+        /// <summary>
+        /// For Event: OnRespawn. The character has respawned. Start moving again.
+        /// </summary>
+        public static void RegisterOnRespawn(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnRespawn, handler);
+
+        /// <summary>
+        /// For Event: OnRespawn. The character has respawned. Start moving again.
+        /// </summary>
+        public static void UnregisterOnRespawn(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnRespawn, handler);
+
+        /// <summary>
+        /// For Event: OnRespawn. The character has respawned. Start moving again.
+        /// </summary>
+        public static void CallOnRespawn(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnRespawn);
+        #endregion
     }
 }
