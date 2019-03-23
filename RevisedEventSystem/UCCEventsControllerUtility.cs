@@ -42,6 +42,7 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<int, ItemType, bool, bool>(caller, LookupStr_OnItemTryReload, slotID, itemType, immediateReload, equipCheck);
         #endregion
 
+        #region OnAnimatorItemReloadEvents
         #region OnAnimatorItemReload
         public static string LookupStr_OnAnimatorItemReload = "OnAnimatorItemReload";
 
@@ -217,6 +218,7 @@ namespace UtilitiesAndHelpersForUCC
         public static void CallOnAnimatorItemReloadCompleteThirdSlot(Object caller) =>
             EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadCompleteThirdSlot);
         #endregion
+        #endregion
 
         #region OnAbilityWillEquipItem
         public static string LookupStr_OnAbilityWillEquipItem = "OnAbilityWillEquipItem";
@@ -314,31 +316,6 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<int, Vector3, Vector3>(caller, LookupStr_OnAddSecondaryForce, slotID, positionalForce, rotationalForce);
         #endregion
 
-        #region OnDeath
-        public static string LookupStr_OnDeath = "OnDeath";
-
-        /// <summary>
-        /// For Event: OnDeath. The character has died.
-        /// </summary>
-        public static void RegisterOnDeath(Object caller, System.Action<Vector3, Vector3, GameObject> handler) =>
-            EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, handler);
-
-        /// <summary>
-        /// For Event: OnDeath. The character has died.
-        /// </summary>
-        public static void UnregisterOnDeath(Object caller, System.Action<Vector3, Vector3, GameObject> handler) =>
-            EventHandler.UnregisterEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, handler);
-
-        /// <summary>
-        /// For Event: OnDeath. The character has died.
-        /// </summary>
-        /// <param name="position">The position of the force.</param>
-        /// <param name="force">The amount of force which killed the character.</param>
-        /// <param name="attacker">The GameObject that killed the character.</param>
-        public static void CallOnDeath(Object caller, Vector3 position, Vector3 force, GameObject attacker) =>
-            EventHandler.ExecuteEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, position, force, attacker);
-        #endregion
-
         #region OnItemUseConsumableItemType
         public static string LookupStr_OnItemUseConsumableItemType = "OnItemUseConsumableItemType";
 
@@ -386,6 +363,7 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent(caller, LookupStr_OnItemPickupStartPickup);
         #endregion
 
+        #region OnInventoryEvents
         #region OnInventoryPickupItemType
         public static string LookupStr_OnInventoryPickupItemType = "OnInventoryPickupItemType";
 
@@ -506,6 +484,7 @@ namespace UtilitiesAndHelpersForUCC
         public static void CallOnInventoryRemoveItem(Object caller, Item item, int slotID) =>
             EventHandler.ExecuteEvent<Item, int>(caller, LookupStr_OnInventoryRemoveItem, item, slotID);
         #endregion
+        #endregion
 
         #region OnCharacterGrounded
         public static string LookupStr_OnCharacterGrounded = "OnCharacterGrounded";
@@ -622,6 +601,31 @@ namespace UtilitiesAndHelpersForUCC
         /// <param name="hitCollider">The Collider that was hit.</param>
         public static void CallOnHealthDamage(Object caller, float amount, Vector3 position, Vector3 force, GameObject attacker, Collider hitCollider) =>
             EventHandler.ExecuteEvent<float, Vector3, Vector3, GameObject, Collider>(caller, LookupStr_OnHealthDamage, amount, position, force, attacker, hitCollider);
+        #endregion
+
+        #region OnDeath
+        public static string LookupStr_OnDeath = "OnDeath";
+
+        /// <summary>
+        /// For Event: OnDeath. The character has died.
+        /// </summary>
+        public static void RegisterOnDeath(Object caller, System.Action<Vector3, Vector3, GameObject> handler) =>
+            EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, handler);
+
+        /// <summary>
+        /// For Event: OnDeath. The character has died.
+        /// </summary>
+        public static void UnregisterOnDeath(Object caller, System.Action<Vector3, Vector3, GameObject> handler) =>
+            EventHandler.UnregisterEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, handler);
+
+        /// <summary>
+        /// For Event: OnDeath. The character has died.
+        /// </summary>
+        /// <param name="position">The position of the force.</param>
+        /// <param name="force">The amount of force which killed the character.</param>
+        /// <param name="attacker">The GameObject that killed the character.</param>
+        public static void CallOnDeath(Object caller, Vector3 position, Vector3 force, GameObject attacker) =>
+            EventHandler.ExecuteEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, position, force, attacker);
         #endregion
 
         #region OnAnimatorDamageVisualizationComplete
