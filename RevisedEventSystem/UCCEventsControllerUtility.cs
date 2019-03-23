@@ -361,6 +361,33 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<int, Vector3, Vector3>(caller, LookupStr_OnAddSecondaryForce, slotID, positionalForce, rotationalForce);
         #endregion
 
+        #region OnObjectImpact
+        public static string LookupStr_OnObjectImpact = "OnObjectImpact";
+
+        /// <summary>
+        /// For Event: OnObjectImpact. The object has been impacted with another object.
+        /// </summary>
+        public static void RegisterOnObjectImpact(Object caller, Action<float, Vector3, Vector3, GameObject, Collider> handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnObjectImpact, handler);
+
+        /// <summary>
+        /// For Event: OnObjectImpact. The object has been impacted with another object.
+        /// </summary>
+        public static void UnregisterOnObjectImpact(Object caller, Action<float, Vector3, Vector3, GameObject, Collider> handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnObjectImpact, handler);
+
+        /// <summary>
+        /// For Event: OnObjectImpact. The object has been impacted with another object.
+        /// </summary>
+        /// <param name="amount">The amount of damage taken.</param>
+        /// <param name="position">The position of the damage.</param>
+        /// <param name="forceDirection">The direction that the object took damage from.</param>
+        /// <param name="attacker">The GameObject that did the damage.</param>
+        /// <param name="hitCollider">The Collider that was hit.</param>
+        public static void CallOnObjectImpact(Object caller, float amount, Vector3 position, Vector3 forceDirection, GameObject attacker, Collider hitCollider) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnObjectImpact, amount, position, forceDirection, attacker, hitCollider);
+        #endregion
+
         #region OnItemUseConsumableItemType
         public static string LookupStr_OnItemUseConsumableItemType = "OnItemUseConsumableItemType";
 
