@@ -113,6 +113,31 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<bool, Abilities.Items.Use>(caller, LookupStr_OnUseAbilityStart, start, useAbility);
         #endregion
 
+        #region OnAddSecondaryForce
+        public static string LookupStr_OnAddSecondaryForce = "OnAddSecondaryForce";
+
+        /// <summary>
+        /// For Event: OnAddSecondaryForce. Adds a positional and rotational force to the ik target.
+        /// </summary>
+        public static void RegisterOnAddSecondaryForce(Object caller, System.Action<int, Vector3, Vector3> handler) =>
+            EventHandler.RegisterEvent<int, Vector3, Vector3>(caller, LookupStr_OnAddSecondaryForce, handler);
+
+        /// <summary>
+        /// For Event: OnAddSecondaryForce. Adds a positional and rotational force to the ik target.
+        /// </summary>
+        public static void UnregisterOnAddSecondaryForce(Object caller, System.Action<int, Vector3, Vector3> handler) =>
+            EventHandler.UnregisterEvent<int, Vector3, Vector3>(caller, LookupStr_OnAddSecondaryForce, handler);
+
+        /// <summary>
+        /// For Event: OnAddSecondaryForce. Adds a positional and rotational force to the ik target.
+        /// </summary>
+        /// <param name="slotID">The Slot ID that is adding the secondary force.</param>
+        /// <param name="positionalForce">The positional force to add.</param>
+        /// <param name="rotationalForce">The rotational force to add.</param>
+        public static void CallOnAddSecondaryForce(Object caller, int slotID, Vector3 positionalForce, Vector3 rotationalForce) =>
+            EventHandler.ExecuteEvent<int, Vector3, Vector3>(caller, LookupStr_OnAddSecondaryForce, slotID, positionalForce, rotationalForce);
+        #endregion
+
         #region OnDeath
         public static string LookupStr_OnDeath = "OnDeath";
 
@@ -279,6 +304,51 @@ namespace UtilitiesAndHelpersForUCC
         /// <param name="grounded">Is the character on the ground?</param>
         public static void CallOnCharacterGrounded(Object caller, bool grounded) =>
             EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnCharacterGrounded, grounded);
+        #endregion
+
+        #region OnAnimatorWillSnap
+        public static string LookupStr_OnAnimatorWillSnap = "OnAnimatorWillSnap";
+
+        /// <summary>
+        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
+        /// </summary>
+        public static void RegisterOnAnimatorWillSnap(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorWillSnap, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
+        /// </summary>
+        public static void UnregisterOnAnimatorWillSnap(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorWillSnap, handler);
+
+
+        /// <summary>
+        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
+        /// </summary>
+        public static void CallOnAnimatorWillSnap(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorWillSnap);
+        #endregion
+
+        #region OnAnimatorSnapped
+        public static string LookupStr_OnAnimatorSnapped = "OnAnimatorSnapped";
+
+        /// <summary>
+        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
+        /// </summary>
+        public static void RegisterOnAnimatorSnapped(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorSnapped, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
+        /// </summary>
+        public static void UnregisterOnAnimatorSnapped(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorSnapped, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
+        /// </summary>
+        public static void CallOnAnimatorSnapped(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorSnapped);
         #endregion
 
         #region OnRespawn
