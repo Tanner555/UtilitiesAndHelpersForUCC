@@ -650,6 +650,58 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorDamageVisualizationComplete);
         #endregion
 
+        #region OnEnableGameplayInput
+        public static string LookupStr_OnEnableGameplayInput = "OnEnableGameplayInput";
+
+        /// <summary>
+        /// For Event: CallOnEnableGameplayInput.
+        /// Enables or disables gameplay input. 
+        /// An example of when it will not be enabled is when there is a fullscreen UI over the main camera.
+        /// </summary>
+        public static void RegisterOnEnableGameplayInput(Object caller, System.Action<bool> handler) =>
+            EventHandler.RegisterEvent<bool>(caller, LookupStr_OnEnableGameplayInput, handler);
+
+        /// <summary>
+        /// For Event: CallOnEnableGameplayInput.
+        /// Enables or disables gameplay input. 
+        /// An example of when it will not be enabled is when there is a fullscreen UI over the main camera.
+        /// </summary>
+        public static void UnregisterOnEnableGameplayInput(Object caller, System.Action<bool> handler) =>
+            EventHandler.UnregisterEvent<bool>(caller, LookupStr_OnEnableGameplayInput, handler);
+
+        /// <summary>
+        /// For Event: CallOnEnableGameplayInput.
+        /// Enables or disables gameplay input. 
+        /// An example of when it will not be enabled is when there is a fullscreen UI over the main camera.
+        /// </summary>
+        /// <param name="enable">True if the input is enabled.</param>
+        public static void CallOnEnableGameplayInput(Object caller, bool enable) =>
+            EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnEnableGameplayInput, enable);
+        #endregion
+
+        #region OnCharacterActivate
+        public static string LookupStr_OnCharacterActivate = "OnCharacterActivate";
+
+        /// <summary>
+        /// For Event: OnCharacterActivate. The character has been activated or deactivated.
+        /// </summary>
+        public static void RegisterOnCharacterActivate(Object caller, System.Action<bool> handler) =>
+            EventHandler.RegisterEvent<bool>(caller, LookupStr_OnCharacterActivate, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterActivate. The character has been activated or deactivated.
+        /// </summary>
+        public static void UnregisterOnCharacterActivate(Object caller, System.Action<bool> handler) =>
+            EventHandler.UnregisterEvent<bool>(caller, LookupStr_OnCharacterActivate, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterActivate. The character has been activated or deactivated.
+        /// </summary>
+        /// <param name="enable">True if the character has been activated.</param>
+        public static void CallOnCharacterActivate(Object caller, bool enable) =>
+            EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnCharacterActivate, enable);
+        #endregion
+
         #region OnCharacterAttachLookSource
         public static string LookupStr_OnCharacterAttachLookSource = "OnCharacterAttachLookSource";
 
