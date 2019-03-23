@@ -86,6 +86,138 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadComplete);
         #endregion
 
+        #region OnAnimatorItemReloadFirstSlot
+        public static string LookupStr_OnAnimatorItemReloadFirstSlot = "OnAnimatorItemReloadFirstSlot";
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadFirstSlot. The animation has reloaded the first item slot.
+        /// </summary>
+        public static void RegisterOnAnimatorItemReloadFirstSlot(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorItemReloadFirstSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadFirstSlot. The animation has reloaded the first item slot.
+        /// </summary>
+        public static void UnregisterOnAnimatorItemReloadFirstSlot(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorItemReloadFirstSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadFirstSlot. The animation has reloaded the first item slot.
+        /// </summary>
+        public static void CallOnAnimatorItemReloadFirstSlot(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadFirstSlot);
+        #endregion
+
+        #region OnAnimatorItemReloadSecondSlot
+        public static string LookupStr_OnAnimatorItemReloadSecondSlot = "OnAnimatorItemReloadSecondSlot";
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadSecondSlot. The animation has reloaded the second item slot.
+        /// </summary>
+        public static void RegisterOnAnimatorItemReloadSecondSlot(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorItemReloadSecondSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadSecondSlot. The animation has reloaded the second item slot.
+        /// </summary>
+        public static void UnregisterOnAnimatorItemReloadSecondSlot(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorItemReloadSecondSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadSecondSlot. The animation has reloaded the second item slot.
+        /// </summary>
+        public static void CallOnAnimatorItemReloadSecondSlot(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadSecondSlot);
+        #endregion
+
+        #region OnAnimatorItemReloadThirdSlot
+        public static string LookupStr_OnAnimatorItemReloadThirdSlot = "OnAnimatorItemReloadThirdSlot";
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadThirdSlot. The animation has reloaded the third item slot.
+        /// </summary>
+        public static void RegisterOnAnimatorItemReloadThirdSlot(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorItemReloadThirdSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadThirdSlot. The animation has reloaded the third item slot.
+        /// </summary>
+        public static void UnregisterOnAnimatorItemReloadThirdSlot(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorItemReloadThirdSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadThirdSlot. The animation has reloaded the third item slot.
+        /// </summary>
+        public static void CallOnAnimatorItemReloadThirdSlot(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadThirdSlot);
+        #endregion
+
+        #region OnAnimatorItemReloadCompleteFirstSlot
+        public static string LookupStr_OnAnimatorItemReloadCompleteFirstSlot = "OnAnimatorItemReloadCompleteFirstSlot";
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteFirstSlot. The reload animation has completed for the first item slot.
+        /// </summary>
+        public static void RegisterOnAnimatorItemReloadCompleteFirstSlot(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorItemReloadCompleteFirstSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteFirstSlot. The reload animation has completed for the first item slot.
+        /// </summary>
+        public static void UnregisterOnAnimatorItemReloadCompleteFirstSlot(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorItemReloadCompleteFirstSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteFirstSlot. The reload animation has completed for the first item slot.
+        /// </summary>
+        public static void CallOnAnimatorItemReloadCompleteFirstSlot(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadCompleteFirstSlot);
+        #endregion
+
+        #region OnAnimatorItemReloadCompleteSecondSlot
+        public static string LookupStr_OnAnimatorItemReloadCompleteSecondSlot = "OnAnimatorItemReloadCompleteSecondSlot";
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteSecondSlot. The reload animation has completed for the second item slot.
+        /// </summary>
+        public static void RegisterOnAnimatorItemReloadCompleteSecondSlot(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorItemReloadCompleteSecondSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteSecondSlot. The reload animation has completed for the second item slot.
+        /// </summary>
+        public static void UnregisterOnAnimatorItemReloadCompleteSecondSlot(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorItemReloadCompleteSecondSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteSecondSlot. The reload animation has completed for the second item slot.
+        /// </summary>
+        public static void CallOnAnimatorItemReloadCompleteSecondSlot(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadCompleteSecondSlot);
+        #endregion
+
+        #region OnAnimatorItemReloadCompleteThirdSlot
+        public static string LookupStr_OnAnimatorItemReloadCompleteThirdSlot = "OnAnimatorItemReloadCompleteThirdSlot";
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteThirdSlot. The reload animation has completed for the third item slot.
+        /// </summary>
+        public static void RegisterOnAnimatorItemReloadCompleteThirdSlot(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorItemReloadCompleteThirdSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteThirdSlot. The reload animation has completed for the third item slot.
+        /// </summary>
+        public static void UnregisterOnAnimatorItemReloadCompleteThirdSlot(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorItemReloadCompleteThirdSlot, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadCompleteThirdSlot. The reload animation has completed for the third item slot.
+        /// </summary>
+        public static void CallOnAnimatorItemReloadCompleteThirdSlot(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadCompleteThirdSlot);
+        #endregion
+
         #region OnAbilityWillEquipItem
         public static string LookupStr_OnAbilityWillEquipItem = "OnAbilityWillEquipItem";
 
