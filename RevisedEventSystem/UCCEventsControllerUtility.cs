@@ -42,6 +42,50 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<int, ItemType, bool, bool>(caller, LookupStr_OnItemTryReload, slotID, itemType, immediateReload, equipCheck);
         #endregion
 
+        #region OnAnimatorItemReload
+        public static string LookupStr_OnAnimatorItemReload = "OnAnimatorItemReload";
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReload. The animation has reloaded all of the items.
+        /// </summary>
+        public static void RegisterOnAnimatorItemReload(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorItemReload, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReload. The animation has reloaded all of the items.
+        /// </summary>
+        public static void UnregisterOnAnimatorItemReload(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorItemReload, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReload. The animation has reloaded all of the items.
+        /// </summary>
+        public static void CallOnAnimatorItemReload(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReload);
+        #endregion
+
+        #region OnAnimatorItemReloadComplete
+        public static string LookupStr_OnAnimatorItemReloadComplete = "OnAnimatorItemReloadComplete";
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadComplete. The reload animation has completed for all of the items.
+        /// </summary>
+        public static void RegisterOnAnimatorItemReloadComplete(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorItemReloadComplete, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadComplete. The reload animation has completed for all of the items.
+        /// </summary>
+        public static void UnregisterOnAnimatorItemReloadComplete(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorItemReloadComplete, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorItemReloadComplete. The reload animation has completed for all of the items.
+        /// </summary>
+        public static void CallOnAnimatorItemReloadComplete(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorItemReloadComplete);
+        #endregion
+
         #region OnAbilityWillEquipItem
         public static string LookupStr_OnAbilityWillEquipItem = "OnAbilityWillEquipItem";
 
@@ -186,6 +230,54 @@ namespace UtilitiesAndHelpersForUCC
         /// <param name="count">The remaining amount of the specified ItemType.</param>
         public static void CallOnItemUseConsumableItemType(Object caller, Item item, ItemType itemType, float count) =>
             EventHandler.ExecuteEvent<Item, ItemType, float>(caller, LookupStr_OnItemUseConsumableItemType, item, itemType, count);
+        #endregion
+
+        #region OnItemPickupStartPickup
+        public static string LookupStr_OnItemPickupStartPickup = "OnItemPickupStartPickup";
+
+        /// <summary>
+        /// For Event: OnItemPickupStartPickup. The ItemPickup component is starting to pick up ItemTypes.
+        /// </summary>
+        public static void RegisterOnItemPickupStartPickup(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnItemPickupStartPickup, handler);
+
+        /// <summary>
+        /// For Event: OnItemPickupStartPickup. The ItemPickup component is starting to pick up ItemTypes.
+        /// </summary>
+        public static void UnregisterOnItemPickupStartPickup(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnItemPickupStartPickup, handler);
+
+        /// <summary>
+        /// For Event: OnItemPickupStartPickup. The ItemPickup component is starting to pick up ItemTypes.
+        /// </summary>
+        public static void CallOnItemPickupStartPickup(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnItemPickupStartPickup);
+        #endregion
+
+        #region OnInventoryPickupItemType
+        public static string LookupStr_OnInventoryPickupItemType = "OnInventoryPickupItemType";
+
+        /// <summary>
+        /// For Event: OnInventoryPickupItemType. An ItemType has been picked up within the inventory.
+        /// </summary>
+        public static void RegisterOnInventoryPickupItemType(Object caller, System.Action<ItemType, float, bool, bool> handler) =>
+            EventHandler.RegisterEvent<ItemType, float, bool, bool>(caller, LookupStr_OnInventoryPickupItemType, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryPickupItemType. An ItemType has been picked up within the inventory.
+        /// </summary>
+        public static void UnregisterOnInventoryPickupItemType(Object caller, System.Action<ItemType, float, bool, bool> handler) =>
+            EventHandler.UnregisterEvent<ItemType, float, bool, bool>(caller, LookupStr_OnInventoryPickupItemType, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryPickupItemType. An ItemType has been picked up within the inventory.
+        /// </summary>
+        /// <param name="itemType">The ItemType that has been equipped.</param>
+        /// <param name="amount">The amount of ItemType picked up.</param>
+        /// <param name="immediatePickup">Was the item be picked up immediately?</param>
+        /// <param name="forceEquip">Should the item be force equipped?</param>
+        public static void CallOnInventoryPickupItemType(Object caller, ItemType itemType, float amount, bool immediatePickup, bool forceEquip) =>
+            EventHandler.ExecuteEvent<ItemType, float, bool, bool>(caller, LookupStr_OnInventoryPickupItemType, itemType, amount, immediatePickup, forceEquip);
         #endregion
 
         #region OnInventoryEquipItem
