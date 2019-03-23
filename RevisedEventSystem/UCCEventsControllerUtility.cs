@@ -250,5 +250,54 @@ namespace UtilitiesAndHelpersForUCC
         public static void CallOnRespawn(Object caller) =>
             EventHandler.ExecuteEvent(caller, LookupStr_OnRespawn);
         #endregion
+
+        #region OnHealthDamage
+        public static string LookupStr_OnHealthDamage = "OnHealthDamage";
+
+        /// <summary>
+        /// For Event: OnHealthDamage. The object has taken damage.
+        /// </summary>
+        public static void RegisterOnHealthDamage(Object caller, Action<float, Vector3, Vector3, GameObject, Collider> handler) =>
+            EventHandler.RegisterEvent<float, Vector3, Vector3, GameObject, Collider>(caller, LookupStr_OnHealthDamage, handler);
+
+        /// <summary>
+        /// For Event: OnHealthDamage. The object has taken damage.
+        /// </summary>
+        public static void UnregisterOnHealthDamage(Object caller, Action<float, Vector3, Vector3, GameObject, Collider> handler) =>
+            EventHandler.UnregisterEvent<float, Vector3, Vector3, GameObject, Collider>(caller, LookupStr_OnHealthDamage, handler);
+
+        /// <summary>
+        /// For Event: OnHealthDamage. The object has taken damage.
+        /// </summary>
+        /// <param name="amount">The amount of damage taken.</param>
+        /// <param name="position">The position of the damage.</param>
+        /// <param name="force">The amount of force applied to the object while taking the damage.</param>
+        /// <param name="attacker">The GameObject that did the damage.</param>
+        /// <param name="hitCollider">The Collider that was hit.</param>
+        public static void CallOnHealthDamage(Object caller, float amount, Vector3 position, Vector3 force, GameObject attacker, Collider hitCollider) =>
+            EventHandler.ExecuteEvent<float, Vector3, Vector3, GameObject, Collider>(caller, LookupStr_OnHealthDamage, amount, position, force, attacker, hitCollider);
+        #endregion
+
+        #region OnAnimatorDamageVisualizationComplete
+        public static string LookupStr_OnAnimatorDamageVisualizationComplete = "OnAnimatorDamageVisualizationComplete";
+
+        /// <summary>
+        /// For Event: OnAnimatorDamageVisualizationComplete. Animation event callback when the damage visualization animation has completed.
+        /// </summary>
+        public static void RegisterOnAnimatorDamageVisualizationComplete(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorDamageVisualizationComplete, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorDamageVisualizationComplete. Animation event callback when the damage visualization animation has completed.
+        /// </summary>
+        public static void UnregisterOnAnimatorDamageVisualizationComplete(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorDamageVisualizationComplete, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorDamageVisualizationComplete. Animation event callback when the damage visualization animation has completed.
+        /// </summary>
+        public static void CallOnAnimatorDamageVisualizationComplete(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorDamageVisualizationComplete);
+        #endregion
     }
 }
