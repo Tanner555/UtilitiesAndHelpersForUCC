@@ -747,5 +747,28 @@ namespace UtilitiesAndHelpersForUCC
         public static void CallOnCameraAttachCharacter(Object caller, GameObject character) =>
             EventHandler.ExecuteEvent<GameObject>(caller, LookupStr_OnCameraAttachCharacter, character);
         #endregion
+
+        #region OnCharacterChangeTimeScale
+        public static string LookupStr_OnCharacterChangeTimeScale = "OnCharacterChangeTimeScale";
+
+        /// <summary>
+        /// For Event: OnCharacterChangeTimeScale. The character's local timescale has changed.
+        /// </summary>
+        public static void RegisterOnCharacterChangeTimeScale(Object caller, System.Action<float> handler) =>
+            EventHandler.RegisterEvent<float>(caller, LookupStr_OnCharacterChangeTimeScale, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterChangeTimeScale. The character's local timescale has changed.
+        /// </summary>
+        public static void UnregisterOnCharacterChangeTimeScale(Object caller, System.Action<float> handler) =>
+            EventHandler.UnregisterEvent<float>(caller, LookupStr_OnCharacterChangeTimeScale, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterChangeTimeScale. The character's local timescale has changed.
+        /// </summary>
+        /// <param name="timeScale">The new timescale.</param>
+        public static void CallOnCharacterChangeTimeScale(Object caller, float timeScale) =>
+            EventHandler.ExecuteEvent<float>(caller, LookupStr_OnCharacterChangeTimeScale, timeScale);
+        #endregion
     }
 }
