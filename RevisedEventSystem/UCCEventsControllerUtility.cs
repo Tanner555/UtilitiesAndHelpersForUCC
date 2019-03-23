@@ -220,6 +220,51 @@ namespace UtilitiesAndHelpersForUCC
         #endregion
         #endregion
 
+        #region OnAnimatorWillSnap
+        public static string LookupStr_OnAnimatorWillSnap = "OnAnimatorWillSnap";
+
+        /// <summary>
+        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
+        /// </summary>
+        public static void RegisterOnAnimatorWillSnap(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorWillSnap, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
+        /// </summary>
+        public static void UnregisterOnAnimatorWillSnap(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorWillSnap, handler);
+
+
+        /// <summary>
+        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
+        /// </summary>
+        public static void CallOnAnimatorWillSnap(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorWillSnap);
+        #endregion
+
+        #region OnAnimatorSnapped
+        public static string LookupStr_OnAnimatorSnapped = "OnAnimatorSnapped";
+
+        /// <summary>
+        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
+        /// </summary>
+        public static void RegisterOnAnimatorSnapped(Object caller, System.Action handler) =>
+            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorSnapped, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
+        /// </summary>
+        public static void UnregisterOnAnimatorSnapped(Object caller, System.Action handler) =>
+            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorSnapped, handler);
+
+        /// <summary>
+        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
+        /// </summary>
+        public static void CallOnAnimatorSnapped(Object caller) =>
+            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorSnapped);
+        #endregion
+
         #region OnAbilityWillEquipItem
         public static string LookupStr_OnAbilityWillEquipItem = "OnAbilityWillEquipItem";
 
@@ -486,74 +531,6 @@ namespace UtilitiesAndHelpersForUCC
         #endregion
         #endregion
 
-        #region OnCharacterGrounded
-        public static string LookupStr_OnCharacterGrounded = "OnCharacterGrounded";
-
-        /// <summary>
-        /// For Event: OnCharacterGrounded. The character has changed grounded state.
-        /// </summary>
-        public static void RegisterOnCharacterGrounded(Object caller, System.Action<bool> handler) =>
-            EventHandler.RegisterEvent<bool>(caller, LookupStr_OnCharacterGrounded, handler);
-
-        /// <summary>
-        /// For Event: OnCharacterGrounded. The character has changed grounded state.
-        /// </summary>
-        public static void UnregisterOnCharacterGrounded(Object caller, System.Action<bool> handler) =>
-            EventHandler.UnregisterEvent<bool>(caller, LookupStr_OnCharacterGrounded, handler);
-
-        /// <summary>
-        /// For Event: OnCharacterGrounded. The character has changed grounded state.
-        /// </summary>
-        /// <param name="grounded">Is the character on the ground?</param>
-        public static void CallOnCharacterGrounded(Object caller, bool grounded) =>
-            EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnCharacterGrounded, grounded);
-        #endregion
-
-        #region OnAnimatorWillSnap
-        public static string LookupStr_OnAnimatorWillSnap = "OnAnimatorWillSnap";
-
-        /// <summary>
-        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
-        /// </summary>
-        public static void RegisterOnAnimatorWillSnap(Object caller, System.Action handler) =>
-            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorWillSnap, handler);
-
-        /// <summary>
-        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
-        /// </summary>
-        public static void UnregisterOnAnimatorWillSnap(Object caller, System.Action handler) =>
-            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorWillSnap, handler);
-
-
-        /// <summary>
-        /// For Event: OnAnimatorWillSnap. Immediately position the IK limbs.
-        /// </summary>
-        public static void CallOnAnimatorWillSnap(Object caller) =>
-            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorWillSnap);
-        #endregion
-
-        #region OnAnimatorSnapped
-        public static string LookupStr_OnAnimatorSnapped = "OnAnimatorSnapped";
-
-        /// <summary>
-        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
-        /// </summary>
-        public static void RegisterOnAnimatorSnapped(Object caller, System.Action handler) =>
-            EventHandler.RegisterEvent(caller, LookupStr_OnAnimatorSnapped, handler);
-
-        /// <summary>
-        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
-        /// </summary>
-        public static void UnregisterOnAnimatorSnapped(Object caller, System.Action handler) =>
-            EventHandler.UnregisterEvent(caller, LookupStr_OnAnimatorSnapped, handler);
-
-        /// <summary>
-        /// For Event: OnAnimatorSnapped. The animator has snapped into position.
-        /// </summary>
-        public static void CallOnAnimatorSnapped(Object caller) =>
-            EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorSnapped);
-        #endregion
-
         #region OnRespawn
         public static string LookupStr_OnRespawn = "OnRespawn";
 
@@ -679,6 +656,29 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnEnableGameplayInput, enable);
         #endregion
 
+        #region OnCharacterGrounded
+        public static string LookupStr_OnCharacterGrounded = "OnCharacterGrounded";
+
+        /// <summary>
+        /// For Event: OnCharacterGrounded. The character has changed grounded state.
+        /// </summary>
+        public static void RegisterOnCharacterGrounded(Object caller, System.Action<bool> handler) =>
+            EventHandler.RegisterEvent<bool>(caller, LookupStr_OnCharacterGrounded, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterGrounded. The character has changed grounded state.
+        /// </summary>
+        public static void UnregisterOnCharacterGrounded(Object caller, System.Action<bool> handler) =>
+            EventHandler.UnregisterEvent<bool>(caller, LookupStr_OnCharacterGrounded, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterGrounded. The character has changed grounded state.
+        /// </summary>
+        /// <param name="grounded">Is the character on the ground?</param>
+        public static void CallOnCharacterGrounded(Object caller, bool grounded) =>
+            EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnCharacterGrounded, grounded);
+        #endregion
+
         #region OnCharacterActivate
         public static string LookupStr_OnCharacterActivate = "OnCharacterActivate";
 
@@ -723,6 +723,29 @@ namespace UtilitiesAndHelpersForUCC
         /// <param name="lookSource">The ILookSource object attached to the character.</param>
         public static void CallOnCharacterAttachLookSource(Object caller, ILookSource lookSource) =>
             EventHandler.ExecuteEvent<ILookSource>(caller, LookupStr_OnCharacterAttachLookSource, lookSource);
+        #endregion
+
+        #region OnCameraAttachCharacter
+        public static string LookupStr_OnCameraAttachCharacter = "OnCameraAttachCharacter";
+
+        /// <summary>
+        /// For Event: OnCameraAttachCharacter. Attaches the handler to the specified character.
+        /// </summary>
+        public static void RegisterOnCameraAttachCharacter(Object caller, System.Action<GameObject> handler) =>
+            EventHandler.RegisterEvent<GameObject>(caller, LookupStr_OnCameraAttachCharacter, handler);
+
+        /// <summary>
+        /// For Event: OnCameraAttachCharacter. Attaches the handler to the specified character.
+        /// </summary>
+        public static void UnregisterOnCameraAttachCharacter(Object caller, System.Action<GameObject> handler) =>
+            EventHandler.UnregisterEvent<GameObject>(caller, LookupStr_OnCameraAttachCharacter, handler);
+
+        /// <summary>
+        /// For Event: OnCameraAttachCharacter. Attaches the handler to the specified character.
+        /// </summary>
+        /// <param name="character">The character to attach the handler to.</param>
+        public static void CallOnCameraAttachCharacter(Object caller, GameObject character) =>
+            EventHandler.ExecuteEvent<GameObject>(caller, LookupStr_OnCameraAttachCharacter, character);
         #endregion
     }
 }
