@@ -18,6 +18,9 @@ namespace UtilitiesAndHelpersForUCC
         public static string LookupStr_OnAbilityWillEquipItem = "OnAbilityWillEquipItem";
         public static string LookupStr_OnAimAbilityAim = "OnAimAbilityAim";
         public static string LookupStr_OnDeath = "OnDeath";
+        public static string LookupStr_OnItemUseConsumableItemType = "OnItemUseConsumableItemType";
+        public static string LookupStr_OnInventoryEquipItem = "OnInventoryEquipItem";
+        public static string LookupStr_OnInventoryUnequipItem = "OnInventoryUnequipItem";
         #endregion
 
         #region Register / Deregister Events
@@ -66,7 +69,41 @@ namespace UtilitiesAndHelpersForUCC
         public static void UnregisterOnDeath(Object caller, System.Action<Vector3, Vector3, GameObject> handler) =>
             EventHandler.UnregisterEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, handler);
 
+        /// <summary>
+        /// For Event: OnItemUseConsumableItemType. The specified consumable ItemType has been used.
+        /// </summary>
+        public static void RegisterOnItemUseConsumableItemType(Object caller, System.Action<Item, ItemType, float> handler) =>
+            EventHandler.RegisterEvent<Item, ItemType, float>(caller, LookupStr_OnItemUseConsumableItemType, handler);
 
+        /// <summary>
+        /// For Event: OnItemUseConsumableItemType. The specified consumable ItemType has been used.
+        /// </summary>
+        public static void UnregisterOnItemUseConsumableItemType(Object caller, System.Action<Item, ItemType, float> handler) =>
+            EventHandler.UnregisterEvent<Item, ItemType, float>(caller, LookupStr_OnItemUseConsumableItemType, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryEquipItem. An item has been equipped.
+        /// </summary>
+        public static void RegisterOnInventoryEquipItem(Object caller, System.Action<Item, int> handler) =>
+            EventHandler.RegisterEvent<Item, int>(caller, LookupStr_OnInventoryEquipItem, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryEquipItem. An item has been equipped.
+        /// </summary>
+        public static void UnregisterOnInventoryEquipItem(Object caller, System.Action<Item, int> handler) =>
+            EventHandler.UnregisterEvent<Item, int>(caller, LookupStr_OnInventoryEquipItem, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryUnequipItem. An item has been unequipped.
+        /// </summary>
+        public static void RegisterOnInventoryUnequipItem(Object caller, System.Action<Item, int> handler) =>
+            EventHandler.RegisterEvent<Item, int>(caller, LookupStr_OnInventoryUnequipItem, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryUnequipItem. An item has been unequipped.
+        /// </summary>
+        public static void UnregisterOnInventoryUnequipItem(Object caller, System.Action<Item, int> handler) =>
+            EventHandler.UnregisterEvent<Item, int>(caller, LookupStr_OnInventoryUnequipItem, handler);
         #endregion
 
         #region EventCalls
@@ -103,8 +140,31 @@ namespace UtilitiesAndHelpersForUCC
         /// <param name="attacker">The GameObject that killed the character.</param>
         public static void CallOnDeath(Object caller, Vector3 position, Vector3 force, GameObject attacker) =>
             EventHandler.ExecuteEvent<Vector3, Vector3, GameObject>(caller, LookupStr_OnDeath, position, force, attacker);
-        
 
+        /// <summary>
+        /// For Event: OnItemUseConsumableItemType. The specified consumable ItemType has been used.
+        /// </summary>
+        /// <param name="item">The Item that has been used.</param>
+        /// <param name="itemType">The ItemType that has been used.</param>
+        /// <param name="count">The remaining amount of the specified ItemType.</param>
+        public static void CallOnItemUseConsumableItemType(Object caller, Item item, ItemType itemType, float count) =>
+            EventHandler.ExecuteEvent<Item, ItemType, float>(caller, LookupStr_OnItemUseConsumableItemType, item, itemType, count);
+
+        /// <summary>
+        /// For Event: OnInventoryEquipItem. An item has been equipped.
+        /// </summary>
+        /// <param name="item">The equipped item.</param>
+        /// <param name="slotID">The slot that the item now occupies.</param>
+        public static void CallOnInventoryEquipItem(Object caller, Item item, int slotID) =>
+            EventHandler.ExecuteEvent<Item, int>(caller, LookupStr_OnInventoryEquipItem, item, slotID);
+
+        /// <summary>
+        /// For Event: OnInventoryUnequipItem. An item has been unequipped.
+        /// </summary>
+        /// <param name="item">The item that was unequipped.</param>
+        /// <param name="slotID">The slot that the item was unequipped from.</param>
+        public static void CallOnInventoryUnequipItem(Object caller, Item item, int slotID) =>
+            EventHandler.ExecuteEvent<Item, int>(caller, LookupStr_OnInventoryUnequipItem, item, slotID);
         #endregion
     }
 }
