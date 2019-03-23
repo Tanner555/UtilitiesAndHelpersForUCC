@@ -8,6 +8,10 @@ using Opsive.UltimateCharacterController.Items;
 using Opsive.UltimateCharacterController.Character;
 using Opsive.UltimateCharacterController.Items.Actions;
 using Opsive.UltimateCharacterController.Events;
+using Opsive.UltimateCharacterController.Game;
+using Opsive.UltimateCharacterController.Motion;
+using Opsive.UltimateCharacterController.Utility;
+using Abilities = Opsive.UltimateCharacterController.Character.Abilities;
 
 namespace UtilitiesAndHelpersForUCC
 {
@@ -83,6 +87,30 @@ namespace UtilitiesAndHelpersForUCC
         /// <param name="aim">Has the Aim ability started?</param>
         public static void CallOnAimAbilityAim(Object caller, bool aim) =>
             EventHandler.ExecuteEvent<bool>(caller, LookupStr_OnAimAbilityAim, aim);
+        #endregion
+
+        #region OnUseAbilityStart
+        public static string LookupStr_OnUseAbilityStart = "OnUseAbilityStart";
+
+        /// <summary>
+        /// For Event: OnUseAbilityStart. The Use ability has started or stopped using an item.
+        /// </summary>
+        public static void RegisterOnUseAbilityStart(Object caller, System.Action<bool, Abilities.Items.Use> handler) =>
+            EventHandler.RegisterEvent<bool, Abilities.Items.Use>(caller, LookupStr_OnUseAbilityStart, handler);
+
+        /// <summary>
+        /// For Event: OnUseAbilityStart. The Use ability has started or stopped using an item.
+        /// </summary>
+        public static void UnregisterOnUseAbilityStart(Object caller, System.Action<bool, Abilities.Items.Use> handler) =>
+            EventHandler.UnregisterEvent<bool, Abilities.Items.Use>(caller, LookupStr_OnUseAbilityStart, handler);
+
+        /// <summary>
+        /// For Event: OnUseAbilityStart. The Use ability has started or stopped using an item.
+        /// </summary>
+        /// <param name="start">Has the Use ability started?</param>
+        /// <param name="useAbility">The Use ability that has started or stopped.</param>
+        public static void CallOnUseAbilityStart(Object caller, bool start, Abilities.Items.Use useAbility) =>
+            EventHandler.ExecuteEvent<bool, Abilities.Items.Use>(caller, LookupStr_OnUseAbilityStart, start, useAbility);
         #endregion
 
         #region OnDeath
@@ -206,6 +234,30 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<Item>(caller, LookupStr_OnInventoryAddItem, item);
         #endregion
 
+        #region OnInventoryRemoveItem
+        public static string LookupStr_OnInventoryRemoveItem = "OnInventoryRemoveItem";
+
+        /// <summary>
+        /// For Event: OnInventoryRemoveItem. The inventory has removed the specified item.
+        /// </summary>
+        public static void RegisterOnInventoryRemoveItem(Object caller, System.Action<Item, int> handler) =>
+            EventHandler.RegisterEvent<Item, int>(caller, LookupStr_OnInventoryRemoveItem, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryRemoveItem. The inventory has removed the specified item.
+        /// </summary>
+        public static void UnregisterOnInventoryRemoveItem(Object caller, System.Action<Item, int> handler) =>
+            EventHandler.UnregisterEvent<Item, int>(caller, LookupStr_OnInventoryRemoveItem, handler);
+
+        /// <summary>
+        /// For Event: OnInventoryRemoveItem. The inventory has removed the specified item.
+        /// </summary>
+        /// <param name="item">The item that was removed.</param>
+        /// <param name="slotID">The slot that the item was removed from.</param>
+        public static void CallOnInventoryRemoveItem(Object caller, Item item, int slotID) =>
+            EventHandler.ExecuteEvent<Item, int>(caller, LookupStr_OnInventoryRemoveItem, item, slotID);
+        #endregion
+
         #region OnCharacterGrounded
         public static string LookupStr_OnCharacterGrounded = "OnCharacterGrounded";
 
@@ -298,6 +350,29 @@ namespace UtilitiesAndHelpersForUCC
         /// </summary>
         public static void CallOnAnimatorDamageVisualizationComplete(Object caller) =>
             EventHandler.ExecuteEvent(caller, LookupStr_OnAnimatorDamageVisualizationComplete);
+        #endregion
+
+        #region OnCharacterAttachLookSource
+        public static string LookupStr_OnCharacterAttachLookSource = "OnCharacterAttachLookSource";
+
+        /// <summary>
+        /// For Event: OnCharacterAttachLookSource. A new ILookSource object has been attached to the character.
+        /// </summary>
+        public static void RegisterOnCharacterAttachLookSource(Object caller, System.Action<ILookSource> handler) =>
+            EventHandler.RegisterEvent<ILookSource>(caller, LookupStr_OnCharacterAttachLookSource, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterAttachLookSource. A new ILookSource object has been attached to the character.
+        /// </summary>
+        public static void UnregisterOnCharacterAttachLookSource(Object caller, System.Action<ILookSource> handler) =>
+            EventHandler.UnregisterEvent<ILookSource>(caller, LookupStr_OnCharacterAttachLookSource, handler);
+
+        /// <summary>
+        /// For Event: OnCharacterAttachLookSource. A new ILookSource object has been attached to the character.
+        /// </summary>
+        /// <param name="lookSource">The ILookSource object attached to the character.</param>
+        public static void CallOnCharacterAttachLookSource(Object caller, ILookSource lookSource) =>
+            EventHandler.ExecuteEvent<ILookSource>(caller, LookupStr_OnCharacterAttachLookSource, lookSource);
         #endregion
     }
 }
