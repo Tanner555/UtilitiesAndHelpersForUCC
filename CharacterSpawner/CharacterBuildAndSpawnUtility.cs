@@ -45,36 +45,38 @@ namespace UtilitiesAndHelpersForUCC
         public Color EnemyColor = Color.red;
         public float GizmosRadius = 1.5f;
         //Used For Adding Components and setting up character
-        protected GameObject spawnedGameObject = null;
+        [HideInInspector]
+        public GameObject spawnedGameObject = null;
 
         #endregion
 
         #region CharacterBuilderFields
         [Header("CharacterBuilder Fields")]
         [Tooltip("The animator controller that the character should use")]
-        [SerializeField] protected RuntimeAnimatorController m_AnimatorController;
+        [SerializeField] public RuntimeAnimatorController m_AnimatorController;
         [Tooltip("Can the character hold items?")]
-        [SerializeField] protected bool m_AddItems = true;
+        [SerializeField] public bool m_AddItems = true;
         [Tooltip("A reference to the ItemCollection used by the ItemSetManager and Inventory.")]
-        [SerializeField] protected ItemCollection m_ItemCollection;
+        [SerializeField] public ItemCollection m_ItemCollection;
         [Tooltip("Does the character have health?")]
-        [SerializeField] protected bool m_AddHealth = true;
+        [SerializeField] public bool m_AddHealth = true;
         [Tooltip("Should Unity's IK system be added?")]
-        [SerializeField] protected bool m_AddUnityIK = true;
+        [SerializeField] public bool m_AddUnityIK = true;
         [Tooltip("Should footstep effects play when moving?")]
-        [SerializeField] protected bool m_AddFootEffects = true;
+        [SerializeField] public bool m_AddFootEffects = true;
         [Tooltip("Should the standard set of abilities be added to the character?")]
-        [SerializeField] protected bool m_AddStandardAbilities = true;
+        [SerializeField] public bool m_AddStandardAbilities = true;
         [Tooltip("Is the character an AI agent?")]
-        [SerializeField] protected bool m_AIAgent;
+        [SerializeField] public bool m_AIAgent;
         [Tooltip("Should the NavMeshAgent be added to the AI agent?")]
-        [SerializeField] protected bool m_AddNavMeshAgent;
+        [SerializeField] public bool m_AddNavMeshAgent;
         [Tooltip("Should the camera be assigned to the character after the character has been created?")]
-        [SerializeField] protected bool m_AssignCamera = true;
+        [SerializeField] public bool m_AssignCamera = true;
         [Tooltip("Movement Type That'll Be Used By The Character Locomotion and Camera Controller")]
-        [SerializeField] protected EThirdPersonMovementTypes m_ThirdPersonMovementType;
+        [SerializeField] public EThirdPersonMovementTypes m_ThirdPersonMovementType;
 
-        private UltimateCharacterLocomotion characterLocomotion;
+        [HideInInspector]
+        public UltimateCharacterLocomotion characterLocomotion;
         #endregion
 
         #region ItemBuilderFields
@@ -82,7 +84,7 @@ namespace UtilitiesAndHelpersForUCC
         [Header("Weapon Positions and Rotations")]
         public WeaponLocalPositionsObject WeaponPositionsObject;
 
-        private List<LocalWeaponPositionsClass> WeaponPositionsList
+        public List<LocalWeaponPositionsClass> WeaponPositionsList
         {
             get { return WeaponPositionsObject != null ? WeaponPositionsObject.WeaponPositionsAndRotations : new List<LocalWeaponPositionsClass>(); }
         }
@@ -90,14 +92,20 @@ namespace UtilitiesAndHelpersForUCC
         [Header("Used For AddableItem Settings")]
         public AddableItemsForSpawnerObject SerializedAddableItem;
 
-        protected List<AddableItemForSpawner> AddableItemsList
+        public List<AddableItemForSpawner> AddableItemsList
         {
             get { return SerializedAddableItem.AddableItems; }
         }
         #endregion
 
+        #region BuildThroughEditorFields
+        [Header("Build Character Through Editor Fields")]
+        public GameObject CharacterToBuildThroughEditor;
+        
+        #endregion
+
         #region Properties
-        protected Color gizmosColor
+        public Color gizmosColor
         {
             get
             {
@@ -125,7 +133,7 @@ namespace UtilitiesAndHelpersForUCC
         #endregion
 
         #region Initialization
-        protected virtual IEnumerator GetReadyToInitializeCharacter()
+        public virtual IEnumerator GetReadyToInitializeCharacter()
         {
             yield return new WaitForSeconds(0);
             if (CharacterPrefabToSpawn != null)
@@ -191,7 +199,7 @@ namespace UtilitiesAndHelpersForUCC
         #endregion
 
         #region MethodsToOverride
-        protected virtual IEnumerator CharacterBuilder_BuildCharacter()
+        public virtual IEnumerator CharacterBuilder_BuildCharacter()
         {
             yield return new WaitForSeconds(0);
             if (bBuildCharacterCompletely)
@@ -232,12 +240,12 @@ namespace UtilitiesAndHelpersForUCC
             }
         }
 
-        protected virtual IEnumerator CharacterSetup_SetupCharacter()
+        public virtual IEnumerator CharacterSetup_SetupCharacter()
         {
             yield return new WaitForSeconds(0);
         }
 
-        protected virtual IEnumerator ItemBuilder_BuildItem()
+        public virtual IEnumerator ItemBuilder_BuildItem()
         {
             yield return new WaitForSeconds(0f);
 
@@ -301,19 +309,19 @@ namespace UtilitiesAndHelpersForUCC
             }
         }
 
-        protected virtual IEnumerator CharacterBuilder_UpdateCharacter()
+        public virtual IEnumerator CharacterBuilder_UpdateCharacter()
         {
             yield return new WaitForSeconds(0);
         }
 
-        protected virtual IEnumerator CharacterSetup_UpdateCharacterSetup()
+        public virtual IEnumerator CharacterSetup_UpdateCharacterSetup()
         {
             yield return new WaitForSeconds(0);
         }
         #endregion
 
         #region CharacterSpawnHelpers
-        protected virtual GameObject SpawnCharacterPrefab(GameObject _character, string _name)
+        public virtual GameObject SpawnCharacterPrefab(GameObject _character, string _name)
         {
             GameObject _spawnedC = Instantiate(_character, transform.position, transform.rotation) as GameObject;
             _spawnedC.name = _name;
@@ -322,7 +330,7 @@ namespace UtilitiesAndHelpersForUCC
         #endregion
 
         #region ItemBuilderHelpers
-        private bool AddableItemHasSpecificPosition(ItemType _itemType, out Vector3 _position, out Vector3 _rotation)
+        public bool AddableItemHasSpecificPosition(ItemType _itemType, out Vector3 _position, out Vector3 _rotation)
         {
             _position = Vector3.zero;
             _rotation = Vector3.zero;
@@ -342,7 +350,7 @@ namespace UtilitiesAndHelpersForUCC
             return false;
         }
 
-        private Transform CreateChildObject(Transform parent, string name, Vector3 offset, Vector3 _eulerRotation)
+        public Transform CreateChildObject(Transform parent, string name, Vector3 offset, Vector3 _eulerRotation)
         {
             var child = new GameObject(name).transform;
             child.parent = parent;
@@ -350,6 +358,100 @@ namespace UtilitiesAndHelpersForUCC
             child.transform.localEulerAngles = _eulerRotation;
             return child;
         }
-#endregion
+        #endregion
+
+        #region CharacterBuilderThroughEditor
+        public void BuildCharacterThroughEditor()
+        {
+            if (Application.isPlaying || CharacterToBuildThroughEditor == null) return;
+
+            if (bBuildCharacterCompletely)
+            {
+                // Use the Character Builder to add the Ultimate Character Controller components.
+                CharacterBuilder.BuildCharacter(CharacterToBuildThroughEditor, /*AddAnimator*/true, m_AnimatorController, /*FPMovementType*/string.Empty,
+                                                GetThirdPersonMovementType(m_ThirdPersonMovementType), /*startFPPerspective*/false,
+                                                /*FPHiddenItems*/null, /*ShadowCastMat*/null, /*AiAgent*/m_AIAgent);
+                CharacterBuilder.BuildCharacterComponents(CharacterToBuildThroughEditor, /*AiAgent*/true, m_AddItems, m_ItemCollection, /*FirstPersonItems*/false,
+                    /*AddHealth*/m_AddHealth, /*AddIK*/m_AddUnityIK, /*AddFootsteps*/m_AddFootEffects, /*AddStandardAbilities*/m_AddStandardAbilities, /*AddNavMeshAgent*/m_AddNavMeshAgent);
+                // Ensure the smoothed bones have been added to the character.
+                var _characterLocomotion = CharacterToBuildThroughEditor.GetComponent<UltimateCharacterLocomotion>();
+                _characterLocomotion.AddDefaultSmoothedBones();
+
+                // The Animator Monitor is one of the first components added and the item system hasn't been added to the character yet. Initialize the Item Parameters after the item system has been setup.
+                if (m_AddItems)
+                {
+                    //var animatorMonitor = CharacterToBuildThroughEditor.GetComponent<AnimatorMonitor>();
+                    //if (animatorMonitor != null)
+                    //{
+                    //    animatorMonitor.InitializeItemParameters();
+                    //}
+                }
+            }
+        }
+
+        public void BuildCharacterItemsThroughEditor()
+        {
+            if (Application.isPlaying || CharacterToBuildThroughEditor == null) return;
+
+            if (bBuildCharacterCompletely && bAttemptToBuildItems)
+            {
+                if (SerializedAddableItem == null) Debug.LogError("No SerializedAddableItem on character");
+
+                InventoryBase inventoryBase;
+                Animator _animatorOnCharacter;
+                if (SerializedAddableItem != null && AddableItemsList != null && AddableItemsList.Count > 0 &&
+                    (inventoryBase = CharacterToBuildThroughEditor.GetComponent<InventoryBase>()) != null &&
+                    (_animatorOnCharacter = CharacterToBuildThroughEditor.GetComponent<Animator>()) != null)
+                {
+                    foreach (var _addableItem in AddableItemsList)
+                    {
+                        //Build Items
+                        Transform _handAssignmentTransform = _addableItem.HandAssignment == EItemBuilderHandAssignmentForSpawner.Left ?
+                            _animatorOnCharacter.GetBoneTransform(HumanBodyBones.LeftHand) :
+                            _animatorOnCharacter.GetBoneTransform(HumanBodyBones.RightHand);
+                        ItemSlot _handAssignmentItemSlot = _handAssignmentTransform.GetComponentInChildren<ItemSlot>();
+                        int _handAssignmentSlotID = _handAssignmentItemSlot.ID;
+                        GameObject _builtItem = ItemBuilder.BuildItem(_addableItem.ItemName, _addableItem.ItemType, _addableItem.AnimatorItemID, CharacterToBuildThroughEditor,
+                            _handAssignmentSlotID, /*AddToDefaultLoadout*/true, /*AddFPPerspective*/false, /*FPObject*/null,/*FPObjectAnim*/null,
+                            /*FPVisibleItem*/null, /*FPItemSlot*/null, /*FPVisibleItemAnim*/null,/*AddTPPerspective*/true,
+                            /*TPObject*/_addableItem.Base, /*TPItemSlot*/_handAssignmentItemSlot,
+                            _addableItem.ThirdPersonItemAnimator != null ? _addableItem.ThirdPersonItemAnimator : null, /*ShadowCastMat*/null,
+                            _addableItem.Type == EItemBuilderItemTypeForSpawner.Melee ? ItemBuilder.ActionType.MeleeWeapon : ItemBuilder.ActionType.ShootableWeapon, _addableItem.ItemType);
+
+                        //Assign The Animator Avatar If It Exists
+                        Transform _childBuildItemReference = _handAssignmentItemSlot.transform.Find(_builtItem.name);
+                        Animator _TPCObjectAnimator;
+                        if (_childBuildItemReference != null &&
+                            _addableItem.ThirdPersonItemAnimator != null && _addableItem.ThirdPersonItemAnimAvatar &&
+                            (_TPCObjectAnimator = _childBuildItemReference.GetComponent<Animator>()) != null)
+                        {
+                            _TPCObjectAnimator.avatar = _addableItem.ThirdPersonItemAnimAvatar;
+                        }
+
+                        //PickUp Items
+                        //if (_addableItem.MyItemPickup != null)
+                        //{
+                        //    _addableItem.MyItemPickup.DoItemPickup(CharacterToBuildThroughEditor, inventoryBase, _handAssignmentSlotID, true, true);
+                        //}
+
+                        //Vector3 _position = Vector3.zero;
+                        //Vector3 _rotation = Vector3.zero;
+                        ////Set Specific Position and Rotation Only If ItemType Has
+                        ////Been Assigned in the Inspector
+                        //if (AddableItemHasSpecificPosition(_addableItem.ItemType, out _position, out _rotation))
+                        //{
+                        //    _builtItem.transform.localPosition = _position;
+                        //    _builtItem.transform.localEulerAngles = _rotation;
+                        //}
+                        ////else
+                        ////{
+                        ////    _builtItem.transform.localPosition = _addableItem.LocalPosition;
+                        ////    _builtItem.transform.localEulerAngles = _addableItem.LocalRotation;
+                        ////}
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }

@@ -368,7 +368,7 @@ MonoBehaviour:
     m_Preset: {fileID: 0}
     m_BlockList: []
     m_Default: 1
-  m_InitCharacterOnAwake: 0
+  m_InitCharacterOnAwake: 1
   m_Character: {fileID: 0}
   m_Anchor: {fileID: 0}
   m_AutoAnchor: 0
@@ -419,9 +419,9 @@ GameObject:
   m_Component:
   - component: {fileID: 608218920}
   - component: {fileID: 608218919}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Simple Character Spawner
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,6 +448,7 @@ MonoBehaviour:
   FriendlyColor: {r: 0, g: 1, b: 0, a: 1}
   EnemyColor: {r: 1, g: 0, b: 0, a: 1}
   GizmosRadius: 1.5
+  spawnedGameObject: {fileID: 0}
   m_AnimatorController: {fileID: 9100000, guid: 1c65957c39679034fb94019d52d6a984,
     type: 2}
   m_AddItems: 1
@@ -460,10 +461,12 @@ MonoBehaviour:
   m_AddNavMeshAgent: 0
   m_AssignCamera: 1
   m_ThirdPersonMovementType: 1
+  characterLocomotion: {fileID: 0}
   WeaponPositionsObject: {fileID: 11400000, guid: 0dbfc552694ae0445b16580ccf7029e6,
     type: 2}
   SerializedAddableItem: {fileID: 11400000, guid: 6dcd76f80d1ecef41816cd514b8c25c4,
     type: 2}
+  CharacterToBuildThroughEditor: {fileID: 0}
 --- !u!4 &608218920
 Transform:
   m_ObjectHideFlags: 0
