@@ -462,6 +462,38 @@ namespace UtilitiesAndHelpersForUCC
             EventHandler.ExecuteEvent<ItemType, float, bool, bool>(caller, LookupStr_OnInventoryPickupItemType, itemType, amount, immediatePickup, forceEquip);
         #endregion
 
+        #region OnInventoryPickupItem
+        public static string LookupStr_OnInventoryPickupItem = "OnInventoryPickupItem";
+
+        /// <summary>
+        /// For Event: OnInventoryPickupItem. An item has been picked up within the inventory. Determine if the ability should start.
+        /// </summary>
+        public static void RegisterOnInventoryPickupItem(Object caller, System.Action<Item, float, bool, bool> handler)
+        {
+            EventHandler.RegisterEvent<Item, float, bool, bool>(caller, LookupStr_OnInventoryPickupItem, handler);
+        }
+
+        /// <summary>
+        /// For Event: OnInventoryPickupItem. An item has been picked up within the inventory. Determine if the ability should start.
+        /// </summary>
+        public static void UnregisterOnInventoryPickupItem(Object caller, System.Action<Item, float, bool, bool> handler)
+        {
+            EventHandler.UnregisterEvent<Item, float, bool, bool>(caller, LookupStr_OnInventoryPickupItem, handler);
+        }
+
+        /// <summary>
+        /// For Event: OnInventoryPickupItem. An item has been picked up within the inventory. Determine if the ability should start.
+        /// </summary>
+        /// <param name="item">The item that has been equipped.</param>
+        /// <param name="count">The amount of item picked up.</param>
+        /// <param name="immediatePickup">Was the item be picked up immediately?</param>
+        /// <param name="forceEquip">Should the item be force equipped?</param>
+        public static void CallOnInventoryPickupItem(Object caller, Item item, float count, bool immediatePickup, bool forceEquip)
+        {
+            EventHandler.ExecuteEvent<Item, float, bool, bool>(caller, LookupStr_OnInventoryPickupItem, item, count, immediatePickup, forceEquip);
+        }
+        #endregion
+
         #region OnInventoryEquipItem
         public static string LookupStr_OnInventoryEquipItem = "OnInventoryEquipItem";
 
@@ -556,6 +588,37 @@ namespace UtilitiesAndHelpersForUCC
         public static void CallOnInventoryRemoveItem(Object caller, Item item, int slotID) =>
             EventHandler.ExecuteEvent<Item, int>(caller, LookupStr_OnInventoryRemoveItem, item, slotID);
         #endregion
+
+        #region OnInventoryUseItemType
+        public static string LookupStr_OnInventoryUseItemType = "OnInventoryUseItemType";
+
+        /// <summary>
+        /// For Event: OnInventoryUseItemType. The specified ItemType has been used.
+        /// </summary>
+        public static void RegisterOnInventoryUseItemType(Object caller, System.Action<ItemType, float> handler)
+        {
+            EventHandler.RegisterEvent<ItemType, float>(caller, LookupStr_OnInventoryUseItemType, handler);
+        }
+
+        /// <summary>
+        /// For Event: OnInventoryUseItemType. The specified ItemType has been used.
+        /// </summary>
+        public static void UnregisterOnInventoryUseItemType(Object caller, System.Action<ItemType, float> handler)
+        {
+            EventHandler.UnregisterEvent<ItemType, float>(caller, LookupStr_OnInventoryUseItemType, handler);
+        }
+
+        /// <summary>
+        /// For Event: OnInventoryUseItemType. The specified ItemType has been used.
+        /// </summary>
+        /// <param name="itemType">The ItemType that has been used.</param>
+        /// <param name="count">The remaining amount of the specified ItemType.</param>
+        public static void CallOnInventoryUseItemType(Object caller, ItemType itemType, float count)
+        {
+            EventHandler.ExecuteEvent<ItemType, float>(caller, LookupStr_OnInventoryUseItemType, itemType, count);
+        }
+        #endregion
+
         #endregion
 
         #region OnRespawn
