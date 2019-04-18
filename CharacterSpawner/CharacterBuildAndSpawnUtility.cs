@@ -212,7 +212,8 @@ namespace UtilitiesAndHelpersForUCC
                     /*AddHealth*/m_AddHealth, /*AddIK*/m_AddUnityIK, /*AddFootsteps*/m_AddFootEffects, /*AddStandardAbilities*/m_AddStandardAbilities, /*AddNavMeshAgent*/m_AddNavMeshAgent);
                 // Ensure the smoothed bones have been added to the character.
                 characterLocomotion = spawnedGameObject.GetComponent<UltimateCharacterLocomotion>();
-                characterLocomotion.AddDefaultSmoothedBones();
+                //Doesn't Work in Latest Update
+                //characterLocomotion.AddDefaultSmoothedBones();
 
                 // The Animator Monitor is one of the first components added and the item system hasn't been added to the character yet. Initialize the Item Parameters after the item system has been setup.
                 if (m_AddItems)
@@ -375,7 +376,8 @@ namespace UtilitiesAndHelpersForUCC
                     /*AddHealth*/m_AddHealth, /*AddIK*/m_AddUnityIK, /*AddFootsteps*/m_AddFootEffects, /*AddStandardAbilities*/m_AddStandardAbilities, /*AddNavMeshAgent*/m_AddNavMeshAgent);
                 // Ensure the smoothed bones have been added to the character.
                 var _characterLocomotion = CharacterToBuildThroughEditor.GetComponent<UltimateCharacterLocomotion>();
-                _characterLocomotion.AddDefaultSmoothedBones();
+                //Doesn't Work in Latest Update
+                //_characterLocomotion.AddDefaultSmoothedBones();
 
                 // The Animator Monitor is one of the first components added and the item system hasn't been added to the character yet. Initialize the Item Parameters after the item system has been setup.
                 if (m_AddItems)
