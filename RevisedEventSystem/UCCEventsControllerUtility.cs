@@ -6,11 +6,14 @@ using Opsive.UltimateCharacterController.Character.Abilities;
 using Opsive.UltimateCharacterController.Inventory;
 using Opsive.UltimateCharacterController.Items;
 using Opsive.UltimateCharacterController.Character;
-using Opsive.UltimateCharacterController.Items.Actions;
-using Opsive.UltimateCharacterController.Events;
-using Opsive.UltimateCharacterController.Game;
-using Opsive.UltimateCharacterController.Motion;
-using Opsive.UltimateCharacterController.Utility;
+//using Opsive.UltimateCharacterController.Items.Actions;
+//using Opsive.UltimateCharacterController.Events;
+//using Opsive.UltimateCharacterController.Game;
+//using Opsive.UltimateCharacterController.Motion;
+//using Opsive.UltimateCharacterController.Utility;
+using Opsive.Shared.Events;
+using Opsive.Shared.Game;
+using Opsive.Shared.Utility;
 using Abilities = Opsive.UltimateCharacterController.Character.Abilities;
 
 namespace UtilitiesAndHelpersForUCC
